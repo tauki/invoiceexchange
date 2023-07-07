@@ -1,0 +1,2 @@
+ent-driver: sqlite # sqlite,pgx
+postgres-dsn: user=user password=password host=host port=port dbname=dbname sslmode=disable
