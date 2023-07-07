@@ -1,0 +1,129 @@
+Balance:
+	+------------------+-----------+--------+----------+----------+---------+---------------+-----------+-----------------------------------+------------+---------+
+	|      Field       |   Type    | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |             StructTag             | Validators | Comment |
+	+------------------+-----------+--------+----------+----------+---------+---------------+-----------+-----------------------------------+------------+---------+
+	| id               | uuid.UUID | true   | false    | false    | true    | false         | true      | json:"id,omitempty"               |          0 |         |
+	| total_amount     | float64   | false  | false    | false    | false   | false         | false     | json:"total_amount,omitempty"     |          0 |         |
+	| available_amount | float64   | false  | false    | false    | false   | false         | false     | json:"available_amount,omitempty" |          0 |         |
+	| entity_id        | uuid.UUID | true   | false    | false    | false   | false         | true      | json:"entity_id,omitempty"        |          0 |         |
+	| created_at       | time.Time | false  | false    | false    | true    | false         | true      | json:"created_at,omitempty"       |          0 |         |
+	| updated_at       | time.Time | false  | false    | false    | true    | true          | false     | json:"updated_at,omitempty"       |          0 |         |
+	+------------------+-----------+--------+----------+----------+---------+---------------+-----------+-----------------------------------+------------+---------+
+	+----------+----------+---------+---------+----------+--------+----------+---------+
+	|   Edge   |   Type   | Inverse | BackRef | Relation | Unique | Optional | Comment |
+	+----------+----------+---------+---------+----------+--------+----------+---------+
+	| investor | Investor | true    | balance | O2M      | false  | true     |         |
+	| issuer   | Issuer   | true    | balance | O2M      | false  | true     |         |
+	+----------+----------+---------+---------+----------+--------+----------+---------+
+	
+Bid:
+	+-----------------+------------+--------+----------+----------+---------+---------------+-----------+----------------------------------+------------+---------+
+	|      Field      |    Type    | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |            StructTag             | Validators | Comment |
+	+-----------------+------------+--------+----------+----------+---------+---------------+-----------+----------------------------------+------------+---------+
+	| id              | uuid.UUID  | true   | false    | false    | true    | false         | true      | json:"id,omitempty"              |          0 |         |
+	| status          | bid.Status | false  | false    | false    | true    | false         | false     | json:"status,omitempty"          |          0 |         |
+	| amount          | float64    | false  | false    | false    | false   | false         | false     | json:"amount,omitempty"          |          0 |         |
+	| accepted_amount | float64    | false  | false    | false    | true    | false         | false     | json:"accepted_amount,omitempty" |          0 |         |
+	| created_at      | time.Time  | false  | false    | false    | true    | false         | true      | json:"created_at,omitempty"      |          0 |         |
+	| updated_at      | time.Time  | false  | false    | false    | true    | true          | false     | json:"updated_at,omitempty"      |          0 |         |
+	+-----------------+------------+--------+----------+----------+---------+---------------+-----------+----------------------------------+------------+---------+
+	+----------+----------+---------+---------+----------+--------+----------+---------+
+	|   Edge   |   Type   | Inverse | BackRef | Relation | Unique | Optional | Comment |
+	+----------+----------+---------+---------+----------+--------+----------+---------+
+	| invoice  | Invoice  | true    | bids    | M2O      | true   | false    |         |
+	| investor | Investor | true    | bids    | M2O      | true   | false    |         |
+	+----------+----------+---------+---------+----------+--------+----------+---------+
+	
+Investor:
+	+-----------+-----------+--------+----------+----------+---------+---------------+-----------+----------------------------+------------+---------+
+	|   Field   |   Type    | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |         StructTag          | Validators | Comment |
+	+-----------+-----------+--------+----------+----------+---------+---------------+-----------+----------------------------+------------+---------+
+	| id        | uuid.UUID | true   | false    | false    | true    | false         | true      | json:"id,omitempty"        |          0 |         |
+	| name      | string    | false  | false    | false    | false   | false         | false     | json:"name,omitempty"      |          0 |         |
+	| joined_at | time.Time | false  | false    | false    | true    | false         | true      | json:"joined_at,omitempty" |          0 |         |
+	+-----------+-----------+--------+----------+----------+---------+---------------+-----------+----------------------------+------------+---------+
+	+----------+---------+---------+---------+----------+--------+----------+---------+
+	|   Edge   |  Type   | Inverse | BackRef | Relation | Unique | Optional | Comment |
+	+----------+---------+---------+---------+----------+--------+----------+---------+
+	| bids     | Bid     | false   |         | O2M      | false  | true     |         |
+	| invoices | Invoice | false   |         | M2M      | false  | true     |         |
+	| balance  | Balance | false   |         | M2O      | true   | false    |         |
+	+----------+---------+---------+---------+----------+--------+----------+---------+
+	
+Invoice:
+	+----------------+----------------+--------+----------+----------+---------+---------------+-----------+---------------------------------+------------+---------+
+	|     Field      |      Type      | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |            StructTag            | Validators | Comment |
+	+----------------+----------------+--------+----------+----------+---------+---------------+-----------+---------------------------------+------------+---------+
+	| id             | uuid.UUID      | true   | false    | false    | true    | false         | true      | json:"id,omitempty"             |          0 |         |
+	| status         | invoice.Status | false  | false    | false    | true    | false         | false     | json:"status,omitempty"         |          0 |         |
+	| asking_price   | float64        | false  | false    | false    | true    | false         | false     | json:"asking_price,omitempty"   |          0 |         |
+	| is_locked      | bool           | false  | false    | false    | true    | false         | false     | json:"is_locked,omitempty"      |          0 |         |
+	| is_approved    | bool           | false  | false    | false    | true    | false         | false     | json:"is_approved,omitempty"    |          0 |         |
+	| invoice_number | string         | false  | false    | false    | false   | false         | false     | json:"invoice_number,omitempty" |          0 |         |
+	| invoice_date   | time.Time      | false  | false    | false    | false   | false         | false     | json:"invoice_date,omitempty"   |          0 |         |
+	| due_date       | time.Time      | false  | false    | false    | false   | false         | false     | json:"due_date,omitempty"       |          0 |         |
+	| amount_due     | float64        | false  | false    | false    | false   | false         | false     | json:"amount_due,omitempty"     |          0 |         |
+	| customer_name  | string         | false  | false    | false    | false   | false         | false     | json:"customer_name,omitempty"  |          0 |         |
+	| reference      | string         | false  | true     | false    | false   | false         | false     | json:"reference,omitempty"      |          0 |         |
+	| company_name   | string         | false  | true     | false    | false   | false         | false     | json:"company_name,omitempty"   |          0 |         |
+	| currency       | string         | false  | false    | false    | true    | false         | false     | json:"currency,omitempty"       |          0 |         |
+	| total_amount   | float64        | false  | true     | false    | true    | false         | false     | json:"total_amount,omitempty"   |          0 |         |
+	| total_vat      | float64        | false  | true     | false    | true    | false         | false     | json:"total_vat,omitempty"      |          0 |         |
+	| created_at     | time.Time      | false  | false    | false    | true    | false         | true      | json:"created_at,omitempty"     |          0 |         |
+	+----------------+----------------+--------+----------+----------+---------+---------------+-----------+---------------------------------+------------+---------+
+	+----------+-------------+---------+----------+----------+--------+----------+---------+
+	|   Edge   |    Type     | Inverse | BackRef  | Relation | Unique | Optional | Comment |
+	+----------+-------------+---------+----------+----------+--------+----------+---------+
+	| items    | InvoiceItem | false   |          | O2M      | false  | true     |         |
+	| bids     | Bid         | false   |          | O2M      | false  | true     |         |
+	| issuer   | Issuer      | true    | invoices | M2O      | true   | false    |         |
+	| investor | Investor    | true    | invoices | M2M      | false  | true     |         |
+	+----------+-------------+---------+----------+----------+--------+----------+---------+
+	
+InvoiceItem:
+	+-------------+-----------+--------+----------+----------+---------+---------------+-----------+------------------------------+------------+---------+
+	|    Field    |   Type    | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |          StructTag           | Validators | Comment |
+	+-------------+-----------+--------+----------+----------+---------+---------------+-----------+------------------------------+------------+---------+
+	| id          | uuid.UUID | true   | false    | false    | true    | false         | true      | json:"id,omitempty"          |          0 |         |
+	| description | string    | false  | false    | false    | false   | false         | false     | json:"description,omitempty" |          0 |         |
+	| quantity    | int       | false  | false    | false    | false   | false         | false     | json:"quantity,omitempty"    |          0 |         |
+	| unit_price  | float64   | false  | false    | false    | false   | false         | false     | json:"unit_price,omitempty"  |          0 |         |
+	| amount      | float64   | false  | false    | false    | false   | false         | false     | json:"amount,omitempty"      |          0 |         |
+	| vat_rate    | float64   | false  | false    | false    | true    | false         | false     | json:"vat_rate,omitempty"    |          0 |         |
+	| vat_amount  | float64   | false  | false    | false    | true    | false         | false     | json:"vat_amount,omitempty"  |          0 |         |
+	+-------------+-----------+--------+----------+----------+---------+---------------+-----------+------------------------------+------------+---------+
+	+---------+---------+---------+---------+----------+--------+----------+---------+
+	|  Edge   |  Type   | Inverse | BackRef | Relation | Unique | Optional | Comment |
+	+---------+---------+---------+---------+----------+--------+----------+---------+
+	| invoice | Invoice | true    | items   | M2O      | true   | true     |         |
+	+---------+---------+---------+---------+----------+--------+----------+---------+
+	
+Issuer:
+	+-----------+-----------+--------+----------+----------+---------+---------------+-----------+----------------------------+------------+---------+
+	|   Field   |   Type    | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |         StructTag          | Validators | Comment |
+	+-----------+-----------+--------+----------+----------+---------+---------------+-----------+----------------------------+------------+---------+
+	| id        | uuid.UUID | true   | false    | false    | true    | false         | true      | json:"id,omitempty"        |          0 |         |
+	| name      | string    | false  | false    | false    | false   | false         | false     | json:"name,omitempty"      |          0 |         |
+	| joined_at | time.Time | false  | false    | false    | true    | false         | true      | json:"joined_at,omitempty" |          0 |         |
+	+-----------+-----------+--------+----------+----------+---------+---------------+-----------+----------------------------+------------+---------+
+	+----------+---------+---------+---------+----------+--------+----------+---------+
+	|   Edge   |  Type   | Inverse | BackRef | Relation | Unique | Optional | Comment |
+	+----------+---------+---------+---------+----------+--------+----------+---------+
+	| invoices | Invoice | false   |         | O2M      | false  | true     |         |
+	| balance  | Balance | false   |         | M2O      | true   | false    |         |
+	+----------+---------+---------+---------+----------+--------+----------+---------+
+	
+Ledger:
+	+------------+---------------+--------+----------+----------+---------+---------------+-----------+-----------------------------+------------+---------+
+	|   Field    |     Type      | Unique | Optional | Nillable | Default | UpdateDefault | Immutable |          StructTag          | Validators | Comment |
+	+------------+---------------+--------+----------+----------+---------+---------------+-----------+-----------------------------+------------+---------+
+	| id         | uuid.UUID     | true   | false    | false    | true    | false         | true      | json:"id,omitempty"         |          0 |         |
+	| status     | ledger.Status | false  | false    | false    | true    | false         | false     | json:"status,omitempty"     |          0 |         |
+	| invoice_id | uuid.UUID     | false  | false    | false    | false   | false         | true      | json:"invoice_id,omitempty" |          0 |         |
+	| entity     | ledger.Entity | false  | false    | false    | false   | false         | true      | json:"entity,omitempty"     |          0 |         |
+	| entity_id  | uuid.UUID     | false  | false    | false    | false   | false         | true      | json:"entity_id,omitempty"  |          0 |         |
+	| amount     | float64       | false  | false    | false    | false   | false         | false     | json:"amount,omitempty"     |          0 |         |
+	| created_at | time.Time     | false  | false    | false    | true    | false         | true      | json:"created_at,omitempty" |          0 |         |
+	| updated_at | time.Time     | false  | false    | false    | true    | true          | false     | json:"updated_at,omitempty" |          0 |         |
+	+------------+---------------+--------+----------+----------+---------+---------------+-----------+-----------------------------+------------+---------+
+	
