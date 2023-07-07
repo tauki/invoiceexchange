@@ -5,6 +5,7 @@
 
 ### Installation
 - Clone the repository
+- Run `go mod download` to download the dependencies
 - Run `go build` to build the binary
 - optionally pass `-o <binary_name>` to specify the name of the binary
 - Run `./<binary_name>` to start the server.
