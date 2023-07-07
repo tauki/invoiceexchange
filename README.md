@@ -2,7 +2,7 @@
 ![test](https://github.com/tauki/invoiceexchange/actions/workflows/test.yml/badge.svg)
 
 ### Requirements
-- Go 1.17 or later
+- Go 1.18 or later
 
 ### Installation
 - Clone the repository
