@@ -1,0 +1,1708 @@
+{
+	"info": {
+		"_postman_id": "d149af12-3d6f-4e7f-aaa4-05e54c5e6c57",
+		"name": "invoiceexchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3106382"
+	},
+	"item": [
+		{
+			"name": "Issuer",
+			"item": [
+				{
+					"name": "Get All Issuer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/issuers",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"issuers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/issuers",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"issuers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:36:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "361"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n        \"name\": \"John Doe\",\n        \"joined_at\": \"2023-07-07T04:22:23.444331+06:00\",\n        \"balance\": {\n            \"id\": \"f3ecd2b6-ce27-40ed-ad11-6ffecf053c11\",\n            \"entity_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n            \"total_amount\": 10110,\n            \"available_amount\": 10110,\n            \"created_at\": \"2023-07-07T04:22:23.443791+06:00\",\n            \"updated_at\": \"2023-07-07T04:22:34.168944+06:00\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Issuer By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/issuer/ac538328-f800-44bc-927f-6bbba9ffce28",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"issuer",
+								"ac538328-f800-44bc-927f-6bbba9ffce28"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/issuer/ac538328-f800-44bc-927f-6bbba9ffce28",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"issuer",
+										"ac538328-f800-44bc-927f-6bbba9ffce28"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:37:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "359"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"name\": \"John Doe\",\n    \"joined_at\": \"2023-07-07T04:22:23.444331+06:00\",\n    \"balance\": {\n        \"id\": \"f3ecd2b6-ce27-40ed-ad11-6ffecf053c11\",\n        \"entity_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n        \"total_amount\": 10110,\n        \"available_amount\": 10110,\n        \"created_at\": \"2023-07-07T04:22:23.443791+06:00\",\n        \"updated_at\": \"2023-07-07T04:22:34.168944+06:00\"\n    }\n}"
+						},
+						{
+							"name": "InvalidID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/issuer/invalidID",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"issuer",
+										"invalidID"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:37:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"invalid issuer ID\",\n    \"field\": \"req.params.id\"\n}"
+						},
+						{
+							"name": "NotFound",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/issuer/f3ecd2b6-ce27-40ed-ad11-6ffecf053c11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"issuer",
+										"f3ecd2b6-ce27-40ed-ad11-6ffecf053c11"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:38:00 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"description\": \"issuer not found\"\n}"
+						},
+						{
+							"name": "PostTrade Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/issuer/ac538328-f800-44bc-927f-6bbba9ffce28",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"issuer",
+										"ac538328-f800-44bc-927f-6bbba9ffce28"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 03:11:21 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "359"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"name\": \"John Doe\",\n    \"joined_at\": \"2023-07-07T08:44:57.255617+06:00\",\n    \"balance\": {\n        \"id\": \"1d2aeca7-dd31-479b-999a-331bee9d41de\",\n        \"entity_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n        \"total_amount\": 10110,\n        \"available_amount\": 10110,\n        \"created_at\": \"2023-07-07T08:44:57.255237+06:00\",\n        \"updated_at\": \"2023-07-07T08:44:57.255237+06:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Issuer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Issuer\",\n    \"balance\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/issuer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"issuer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New Issuer\",\n    \"balance\": 1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/issuer",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"issuer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:38:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "347"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"b74154de-36bc-4073-827b-b4413be09eb8\",\n    \"name\": \"New Issuer\",\n    \"joined_at\": \"2023-07-07T08:38:39.602961+06:00\",\n    \"balance\": {\n        \"id\": \"4a795baa-aef6-48fa-87fe-9872fa1aa73c\",\n        \"entity_id\": \"114a4462-ac7d-4689-a505-6537588cb6c1\",\n        \"total_amount\": 1000,\n        \"available_amount\": 1000,\n        \"created_at\": \"2023-07-07T08:38:39.602956+06:00\",\n        \"updated_at\": \"0001-01-01T00:00:00Z\"\n    }\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New Issuer\",\n    \"balance\": -1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/issuer",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"issuer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:38:58 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"total_amount cannot be negative\",\n    \"field\": \"total_amount\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Investor",
+			"item": [
+				{
+					"name": "Get All Investor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/investors",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/investors",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"investors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:39:37 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "359"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n        \"name\": \"Jhon Doe\",\n        \"joined_at\": \"2023-07-07T04:22:23.445099+06:00\",\n        \"balance\": {\n            \"id\": \"6f14cb8a-5962-4031-8bca-32266631d4ad\",\n            \"entity_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n            \"total_amount\": 9890,\n            \"available_amount\": 9890,\n            \"created_at\": \"2023-07-07T04:22:23.444758+06:00\",\n            \"updated_at\": \"2023-07-07T04:22:34.167773+06:00\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Investor By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/investor/f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor",
+								"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/investor/f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"investor",
+										"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:40:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "357"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"name\": \"Jhon Doe\",\n    \"joined_at\": \"2023-07-07T04:22:23.445099+06:00\",\n    \"balance\": {\n        \"id\": \"6f14cb8a-5962-4031-8bca-32266631d4ad\",\n        \"entity_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n        \"total_amount\": 9890,\n        \"available_amount\": 9890,\n        \"created_at\": \"2023-07-07T04:22:23.444758+06:00\",\n        \"updated_at\": \"2023-07-07T04:22:34.167773+06:00\"\n    }\n}"
+						},
+						{
+							"name": "InvalidID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/investor/InvalidID",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"investor",
+										"InvalidID"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:40:58 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"invalid investor ID\",\n    \"field\": \"req.params.id\"\n}"
+						},
+						{
+							"name": "NotFound",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/investor/6f14cb8a-5962-4031-8bca-32266631d4ad",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"investor",
+										"6f14cb8a-5962-4031-8bca-32266631d4ad"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:41:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"description\": \"investor not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Investor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Investor\",\n    \"balance\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/investor",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New Investor\",\n    \"balance\": 1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/investor",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"investor"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:42:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "349"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"fd9c1be8-430f-4d61-8f3f-b1147335fc11\",\n    \"name\": \"New Investor\",\n    \"joined_at\": \"2023-07-07T08:42:27.421924+06:00\",\n    \"balance\": {\n        \"id\": \"83c916fd-304e-4849-a6a0-a3a9a55e5894\",\n        \"entity_id\": \"1c62a3c4-cf7c-499e-9b05-ff421d5955de\",\n        \"total_amount\": 1000,\n        \"available_amount\": 1000,\n        \"created_at\": \"2023-07-07T08:42:27.421921+06:00\",\n        \"updated_at\": \"0001-01-01T00:00:00Z\"\n    }\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New Investor\",\n    \"balance\": -1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/investor",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"investor"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:42:44 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"total_amount cannot be negative\",\n    \"field\": \"total_amount\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bid",
+			"item": [
+				{
+					"name": "Create Bid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 120\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bid",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bid"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Validation: Investor NotFound",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"investor_id\": \"4f3d2475-d693-4bea-8d6a-9414a2b05f1f\",\n    \"amount\": 120\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/bid",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:46:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"description\": \"investor not found\"\n}"
+						},
+						{
+							"name": "Validation: InvalidID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_id\": \"invalidID\",\n    \"investor_id\": \"4f3d2475-d693-4bea-8d6a-9414a2b05f1f\",\n    \"amount\": 120\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/bid",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:46:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"invalid request body\",\n    \"field\": \"req.body\"\n}"
+						},
+						{
+							"name": "Validation: Invoice NotFound",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_id\": \"4f3d2475-d693-4bea-8d6a-9414a2b05f1f\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 120\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/bid",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:47:49 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"description\": \"invoice not found\"\n}"
+						},
+						{
+							"name": "Success (Status: Pending)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 120\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/bid",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:48:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "298"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"b1b89e9d-131d-4ae0-875c-4b0ed0aabae0\",\n    \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 120,\n    \"accepted_amount\": 0,\n    \"status\": \"PENDING\",\n    \"created_at\": \"2023-07-07T08:48:27.919797+06:00\",\n    \"updated_at\": \"2023-07-07T08:48:27.919797+06:00\"\n}"
+						},
+						{
+							"name": "Failed (Invoiec locked)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 120\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/bid",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:49:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 403,\n    \"description\": \"invoice is locked\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Bid By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bid/bd880f51-d427-4a84-b239-db46af455d5c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bid",
+								"bd880f51-d427-4a84-b239-db46af455d5c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sucess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/bid/bd880f51-d427-4a84-b239-db46af455d5c",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid",
+										"bd880f51-d427-4a84-b239-db46af455d5c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:50:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"bd880f51-d427-4a84-b239-db46af455d5c\",\n    \"invoice_id\": \"d7edb506-b22a-466f-ae28-ded8b8018ad4\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 10,\n    \"accepted_amount\": 0,\n    \"status\": \"PENDING\",\n    \"created_at\": \"2023-07-07T08:44:57.257556+06:00\",\n    \"updated_at\": \"2023-07-07T08:44:57.257556+06:00\"\n}"
+						},
+						{
+							"name": "InvalidID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/bid/InvalidID",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid",
+										"InvalidID"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:51:10 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"invalid bid ID\",\n    \"field\": \"req.params.id\"\n}"
+						},
+						{
+							"name": "NotFound",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/bid/a33add00-900e-4d03-996d-e72efcfdb274",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid",
+										"a33add00-900e-4d03-996d-e72efcfdb274"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:51:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"description\": \"bid not found\"\n}"
+						},
+						{
+							"name": "Success (Accepted Bid)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/bid/b1b89e9d-131d-4ae0-875c-4b0ed0aabae0",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"bid",
+										"b1b89e9d-131d-4ae0-875c-4b0ed0aabae0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:53:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "301"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"b1b89e9d-131d-4ae0-875c-4b0ed0aabae0\",\n    \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n    \"amount\": 120,\n    \"accepted_amount\": 110,\n    \"status\": \"ACCEPTED\",\n    \"created_at\": \"2023-07-07T08:48:27.919797+06:00\",\n    \"updated_at\": \"2023-07-07T08:48:27.919797+06:00\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "CreateInvoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invoice_date\": \"2023-07-07T04:22:30.418531+06:00\",\n    \"invoice_number\": \"INV-001\",\n    \"reference\": \"REF-001\",\n    \"company_name\": \"company_name\",\n    \"customer_name\": \"customer_name\",\n    \"currency\": \"USD\",\n    \"total_amount\": 1000,\n    \"total_vat\": 10,\n    \"due_date\": \"2024-07-07T04:22:30.418531+06:00\",\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"asking_price\": 700\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/invoice",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_date\": \"2023-07-07T04:22:30.418531+06:00\",\n    \"invoice_number\": \"INV-001\",\n    \"reference\": \"REF-001\",\n    \"company_name\": \"company_name\",\n    \"customer_name\": \"customer_name\",\n    \"currency\": \"USD\",\n    \"total_amount\": 1000,\n    \"total_vat\": 10,\n    \"due_date\": \"2024-07-07T04:22:30.418531+06:00\",\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"asking_price\": 700\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/invoice",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:55:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"e3d74f4e-7511-4b5b-8ce8-27a3a40bc6e1\",\n    \"status\": \"pending\",\n    \"asking_price\": 700,\n    \"is_locked\": false,\n    \"is_approved\": false,\n    \"invoice_number\": \"INV-001\",\n    \"invoice_date\": \"2023-07-07T04:22:30.418531+06:00\",\n    \"due_date\": \"2024-07-07T04:22:30.418531+06:00\",\n    \"amount_due\": 700,\n    \"customer_name\": \"customer_name\",\n    \"reference\": \"REF-001\",\n    \"company_name\": \"company_name\",\n    \"currency\": \"USD\",\n    \"total_amount\": 1000,\n    \"total_vat\": 10,\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"investor_ids\": null,\n    \"items\": []\n}"
+						},
+						{
+							"name": "Validation: Issuer NotFound",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"invoice_date\": \"2023-07-07T04:22:30.418531+06:00\",\n    \"invoice_number\": \"INV-001\",\n    \"reference\": \"REF-001\",\n    \"company_name\": \"company_name\",\n    \"customer_name\": \"customer_name\",\n    \"currency\": \"USD\",\n    \"total_amount\": 1000,\n    \"total_vat\": 10,\n    \"due_date\": \"2024-07-07T04:22:30.418531+06:00\",\n    \"issuer_id\": \"e3d74f4e-7511-4b5b-8ce8-27a3a40bc6e1\",\n    \"asking_price\": 700\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/invoice",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:56:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"issuer does not exist\",\n    \"field\": \"invoice.IssuerID\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/invoices",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoices",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 03:18:21 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1484"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n        \"status\": \"processed\",\n        \"asking_price\": 110,\n        \"is_locked\": true,\n        \"is_approved\": true,\n        \"invoice_number\": \"INV-01\",\n        \"invoice_date\": \"2023-07-07T08:44:57.256766+06:00\",\n        \"due_date\": \"2023-08-06T08:44:57.256766+06:00\",\n        \"amount_due\": 0,\n        \"customer_name\": \"Customer\",\n        \"reference\": \"REF-01\",\n        \"company_name\": \"Company\",\n        \"currency\": \"GBP\",\n        \"total_amount\": 120,\n        \"total_vat\": 20,\n        \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n        \"investor_ids\": [\n            \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\"\n        ],\n        \"items\": []\n    },\n    {\n        \"id\": \"d7edb506-b22a-466f-ae28-ded8b8018ad4\",\n        \"status\": \"pending\",\n        \"asking_price\": 110,\n        \"is_locked\": false,\n        \"is_approved\": false,\n        \"invoice_number\": \"INV-02\",\n        \"invoice_date\": \"2023-07-07T08:44:57.257173+06:00\",\n        \"due_date\": \"2023-08-06T08:44:57.257173+06:00\",\n        \"amount_due\": 110,\n        \"customer_name\": \"Customer2\",\n        \"reference\": \"REF-02\",\n        \"company_name\": \"Company\",\n        \"currency\": \"GBP\",\n        \"total_amount\": 120,\n        \"total_vat\": 20,\n        \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n        \"investor_ids\": [\n            \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\"\n        ],\n        \"items\": []\n    },\n    {\n        \"id\": \"e3d74f4e-7511-4b5b-8ce8-27a3a40bc6e1\",\n        \"status\": \"pending\",\n        \"asking_price\": 700,\n        \"is_locked\": false,\n        \"is_approved\": false,\n        \"invoice_number\": \"INV-001\",\n        \"invoice_date\": \"2023-07-07T04:22:30.418531+06:00\",\n        \"due_date\": \"2024-07-07T04:22:30.418531+06:00\",\n        \"amount_due\": 700,\n        \"customer_name\": \"customer_name\",\n        \"reference\": \"REF-001\",\n        \"company_name\": \"company_name\",\n        \"currency\": \"USD\",\n        \"total_amount\": 1000,\n        \"total_vat\": 10,\n        \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n        \"investor_ids\": [],\n        \"items\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Invoice By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoice",
+								"a33add00-900e-4d03-996d-e72efcfdb274"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sucess (Staus:Pending)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"a33add00-900e-4d03-996d-e72efcfdb274"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:45:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "464"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"status\": \"pending\",\n    \"asking_price\": 110,\n    \"is_locked\": false,\n    \"is_approved\": false,\n    \"invoice_number\": \"INV-01\",\n    \"invoice_date\": \"2023-07-07T08:44:57.256766+06:00\",\n    \"due_date\": \"2023-08-06T08:44:57.256766+06:00\",\n    \"amount_due\": 110,\n    \"customer_name\": \"Customer\",\n    \"reference\": \"REF-01\",\n    \"company_name\": \"Company\",\n    \"currency\": \"GBP\",\n    \"total_amount\": 120,\n    \"total_vat\": 20,\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"investor_ids\": [],\n    \"items\": []\n}"
+						},
+						{
+							"name": "Success (Status: locked)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"a33add00-900e-4d03-996d-e72efcfdb274"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:56:44 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "461"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"status\": \"pending\",\n    \"asking_price\": 110,\n    \"is_locked\": true,\n    \"is_approved\": false,\n    \"invoice_number\": \"INV-01\",\n    \"invoice_date\": \"2023-07-07T08:44:57.256766+06:00\",\n    \"due_date\": \"2023-08-06T08:44:57.256766+06:00\",\n    \"amount_due\": 0,\n    \"customer_name\": \"Customer\",\n    \"reference\": \"REF-01\",\n    \"company_name\": \"Company\",\n    \"currency\": \"GBP\",\n    \"total_amount\": 120,\n    \"total_vat\": 20,\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"investor_ids\": [],\n    \"items\": []\n}"
+						},
+						{
+							"name": "PostApproval Success (Status Porcessed)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"a33add00-900e-4d03-996d-e72efcfdb274"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 03:09:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "500"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"status\": \"processed\",\n    \"asking_price\": 110,\n    \"is_locked\": true,\n    \"is_approved\": true,\n    \"invoice_number\": \"INV-01\",\n    \"invoice_date\": \"2023-07-07T08:44:57.256766+06:00\",\n    \"due_date\": \"2023-08-06T08:44:57.256766+06:00\",\n    \"amount_due\": 0,\n    \"customer_name\": \"Customer\",\n    \"reference\": \"REF-01\",\n    \"company_name\": \"Company\",\n    \"currency\": \"GBP\",\n    \"total_amount\": 120,\n    \"total_vat\": 20,\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"investor_ids\": [\n        \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\"\n    ],\n    \"items\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Bid by Invoice ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274/bids",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoice",
+								"a33add00-900e-4d03-996d-e72efcfdb274",
+								"bids"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274/bids",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"a33add00-900e-4d03-996d-e72efcfdb274",
+										"bids"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:57:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "303"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"b1b89e9d-131d-4ae0-875c-4b0ed0aabae0\",\n        \"invoice_id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n        \"investor_id\": \"f743d4ab-3c86-4b31-b5e5-c48fe7f2f1b6\",\n        \"amount\": 120,\n        \"accepted_amount\": 110,\n        \"status\": \"ACCEPTED\",\n        \"created_at\": \"2023-07-07T08:48:27.919797+06:00\",\n        \"updated_at\": \"2023-07-07T08:48:27.919797+06:00\"\n    }\n]"
+						},
+						{
+							"name": "InvalidID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/invalid/bids",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"invalid",
+										"bids"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:57:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"description\": \"invalid invoice ID\",\n    \"field\": \"req.params.id\"\n}"
+						},
+						{
+							"name": "NotFound",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/b1b89e9d-131d-4ae0-875c-4b0ed0aabae0/bids",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"b1b89e9d-131d-4ae0-875c-4b0ed0aabae0",
+										"bids"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:58:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"description\": \"no bids found for this invoice\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Approve Trade for an Invoice",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274/approve",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoice",
+								"a33add00-900e-4d03-996d-e72efcfdb274",
+								"approve"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Accepted",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274/approve",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"a33add00-900e-4d03-996d-e72efcfdb274",
+										"approve"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 02:59:00 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "460"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"a33add00-900e-4d03-996d-e72efcfdb274\",\n    \"status\": \"pending\",\n    \"asking_price\": 110,\n    \"is_locked\": true,\n    \"is_approved\": true,\n    \"invoice_number\": \"INV-01\",\n    \"invoice_date\": \"2023-07-07T08:44:57.256766+06:00\",\n    \"due_date\": \"2023-08-06T08:44:57.256766+06:00\",\n    \"amount_due\": 0,\n    \"customer_name\": \"Customer\",\n    \"reference\": \"REF-01\",\n    \"company_name\": \"Company\",\n    \"currency\": \"GBP\",\n    \"total_amount\": 120,\n    \"total_vat\": 20,\n    \"issuer_id\": \"ac538328-f800-44bc-927f-6bbba9ffce28\",\n    \"investor_ids\": [],\n    \"items\": []\n}"
+						},
+						{
+							"name": "Failed: AlreadyApproved",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/a33add00-900e-4d03-996d-e72efcfdb274/approve",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"a33add00-900e-4d03-996d-e72efcfdb274",
+										"approve"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 03:14:38 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 403,\n    \"description\": \"trade cannot be approved, invoice is already approved\"\n}"
+						},
+						{
+							"name": "Failed: Invoice not locked",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/invoice/d7edb506-b22a-466f-ae28-ded8b8018ad4/approve",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"invoice",
+										"d7edb506-b22a-466f-ae28-ded8b8018ad4",
+										"approve"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 07 Jul 2023 03:15:22 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 403,\n    \"description\": \"trade cannot be approved, invoice is not locked\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SERVER_PORT",
+			"value": "8080",
+			"type": "string"
+		},
+		{
+			"key": "SERVER_HOST",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}
