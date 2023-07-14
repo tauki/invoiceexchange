@@ -55,7 +55,7 @@ Please find the initial migration dump located in `tools/dump_ddl/initial_dump`
  - `tools`: Contains the tools for the server, currently it only contains the `dump_ddl` tool to generate the migration dump for the database and the postman collection json for the API.
 
 ### API
-- A `postman` collection can be found [here](https://api.postman.com/collections/3106382-d149af12-3d6f-4e7f-aaa4-05e54c5e6c57?access_key=PMAT-01H4M16QCQXARW45QZAZ8E31TV). The collection contains all the endpoints and examples for the requests and responses.
+- A `postman` collection can be found [here](https://www.postman.com/tauki/workspace/public/collection/3106382-ce688021-79ec-4152-9abb-61cca0886351?action=share&creator=3106382). The collection contains all the endpoints and examples for the requests and responses.
 - Alternatively, you can import the collection to postman from the `tools/invoiceexchange.postman_collection.json` file in the root directory of the project. The collection is exported with `Collection v2.1`.
 
 ### Improvements
